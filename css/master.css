@@ -1,0 +1,368 @@
+/*master - style - styles -estilos - index - main -app*/
+/*=== Selector Universal ===*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+/*=== Comportamiento Global ===*/
+html{
+    scroll-behavior: smooth;
+}
+img{
+    width: 100%; /*Medida relativa*/    
+}
+ul{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+}
+
+/*=== Aplicando CSS al Logo===*/
+#logo{
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+/*=== Aplicando CSS a la Barra de Navegación===*/
+div#menu{
+    text-align: center;
+}
+nav ul li a{
+    position: relative;
+    font-size: 1.5rem;
+    color: black;
+}
+
+nav ul li a::before{
+    content: '';
+    position: absolute;
+    background-color: blue;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    bottom: -10px;
+    transition: 0.8s;
+}
+nav ul li a:hover{
+    color: blue;
+}
+nav ul li a:hover::before{
+    width: 100%;
+}
+
+
+
+/*=== Aplicando CSS a la sección imagen ===*/
+#imagen{
+    display: none;
+}
+
+/*=== Aplicando CSS Sección de Productos===*/
+.producto{
+    position: relative;
+}
+.imagenDescuento{
+    position: absolute;
+    border-radius: 50%;
+    width: 15%;
+    top: 30px;
+    right: 60px;
+    animation-name: destacar;
+    animation-duration: 3s;
+    /*animation-direction:alternate;*/
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+/*
+@keyframes destacar{
+    from{
+        transform: scale(0.6);
+    }
+    to{
+        transform: scale(0.9);
+    }
+}
+*/
+@keyframes destacar {
+   10%{
+    
+    transform: rotate(360deg);
+   } 
+   20%{
+    
+    box-shadow: 10px 10px 10px blue;
+   }
+   50%{
+    
+    transform: scale(0.5);
+    box-shadow: 10px 10px 10px tomato;
+   }
+   70%{
+    transform: scale(0.8);
+    box-shadow: 10px 10px 10px green;
+   }
+   100%{
+    transform: scale(0.9);
+    box-shadow: 10px 10px 10px aqua;
+   }
+}
+
+
+
+/*=== Trabajando con las media queries ===*/
+/*Tablets*/
+@media(min-width:768px){
+    /*=== Aplicadno CSS al encabezado ===*/
+    #encabezado{
+        display: flex;
+        padding: 10px;
+        align-items: center;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: rgba(255,255,255,0.9);
+        transition: 0.9s;
+    }
+    /*=== Creando una clase animar - Que será asignada desde el JavaScript ===*/
+    #encabezado.animar{
+        padding: 0px 30px;
+        background-color: rgba(255,255,255,1);
+    }
+    #logo{
+        width: 10%;
+        padding-top: 0;
+    }
+    #menu{
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        font-family: 'Roboto', sans-serif;
+
+    }
+    #menuIzquierdo{
+        width: 50%;
+    }
+    #menuDerecho{
+        width: 20%;
+    }
+    #opcionesIzquierdo{
+        display: flex;
+        justify-content: space-around;
+        
+    }
+    #opcionesDerecho{
+        display: flex;
+        justify-content: space-around;
+    }
+    nav#menuIzquierdo ul#opcionesIzquierdo li a, nav#menuDerecho ul#opcionesDerecho li a{
+        text-decoration: none;
+        color: black;
+        font-size: 1.2rem; /*1rem = 16px */
+    }
+
+    nav#menuIzquierdo ul#opcionesIzquierdo li a:hover, nav#menuDerecho ul#opcionesDerecho li a:hover{
+        color: #00095B;
+        /*text-decoration: underline;*/
+    }
+    nav ul li a::before{
+        height: 4px;
+    }
+    /*=== Aplicando CSS a la sección imagen ===*/
+    /*
+    #imagen{
+        display: block;
+        /*Rutas: Relativas - Absolutas */
+        /*background-image: url('https://cdn.pixabay.com/photo/2016/08/30/11/47/beverly-hills-1630448_960_720.jpg');
+        background-image: url('../img/banner-formulario.webp');
+        height: 600px;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    */
+    /*=== Aplicando CSS al titulo===*/
+    .titulo{
+        font-family: 'Bebas Neue', cursive;
+        text-align: center;
+        font-size: 3rem;
+    }
+    /*=== Aplicando CSS a la seccion de productos===*/
+    #productos{
+        display: flex;
+        text-align: center;
+    }
+    
+    .producto{
+        padding:20px;
+        border: 2px double #00095B;
+        margin: 10px;
+        border-radius: 0px 0px 60px 0px;
+        box-shadow: 10px 10px 10px inset #00095B;
+        position: relative;
+    }
+    .imagenDescuento{
+        width: 15%;
+    }
+    .boton{
+        color: white;
+        background-color: #00095B;
+        display: inline-block;
+        width: 30%;
+        padding: 10px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.2rem;
+        margin-top: 10px;
+        border-radius: 0px 0px 60px 0px;
+    }
+    /*=== Aplicadno CSS a la sección mensaje===*/
+    #mensaje{
+        background-image: url('../img/tablero-publicidad.jpg');
+        height: 600px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+
+    /*=== Aplicando CSS a la Galería  (CSS-GRID)===*/
+    #galeria{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /*Le estamos otorgando margen primero a la fila y luego a las columnas*/
+        gap: 10px;
+    }
+    .efectoGaleria{
+        /*transition-property: all;
+        transition-duration: 3s;
+        transition-delay: 1s;*/
+        transition: all 1s;
+
+    }
+    .efectoGaleria:hover{
+        /*opacity: 0.5;*/
+        /*transform: scale(1.2);*/
+        /*transform: rotate(-45deg);*/
+        filter: grayscale(70%);
+        box-shadow: 5px 5px 10px blue;
+    }
+    /*=== Aplicando CSS a la sección de la Tabla=== */
+    #filaEncabezado{
+        text-align: center;
+        background-color: blue;
+        color: white;
+        font-size: 1.5rem;
+    }
+    .formatoCeldas{
+        text-align: center;
+    }
+
+    /*=== Aplicando CSS al Formulario===*/    
+    #formContacto{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        
+    }
+    #formulario{
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.5rem;
+    }
+    #formulario input{
+        border: none;
+        border-bottom: 2px solid blue;
+        font-size: 1.2rem;
+    }
+    input:focus{
+        outline: none;
+        color: blue;
+    }
+    #registro{
+        color: white;
+        background-color: blue;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 1.5rem;
+    }
+    #registro:hover{
+        color: blue;
+        background-color: white;
+        border: 2px solid blue;
+        cursor: pointer;
+        box-shadow: 10px 10px 10px blue;
+    }
+
+    /*=== Aplcando CSS al Footer===*/
+    #piePagina{
+        display: grid;
+        grid-template-rows: auto;
+        
+    }
+    #menuFooter{
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        align-items: center;
+    }
+    #redesSociales{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+    }
+
+    /*
+    #piePagina{
+        background-color: #00095B;
+        color: white;
+        padding: 10px;
+    }
+    #menuFooter{
+        
+    }
+    #opcionesFooter{
+        float: left;
+        
+    }
+    #opcionesFooter li{
+        margin-bottom: 6px;
+    }
+    #redesSociales{
+        float: right;
+        padding-right: 30px;
+        
+    }
+    #redesSociales li{
+        margin-top: 10px;
+        
+    }
+    #derechos{
+        clear: both;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: antiquewhite;
+        padding: 20px;
+        color: #00095B;
+    }
+    ul#opcionesFooter li{
+        /*list-style-image: url('../img/star-solid.svg');
+        background-image: url('../img/star-regular.svg');
+        background-repeat: no-repeat;
+        padding-left: 30px;
+    }
+    ul#opcionesFooter li a, ul#redesSociales li a{
+        color: white;
+
+    }
+    */
+
+}
+
+@media(min-width:992px){
+    /*=== Aplicando CSS a la Galería  (CSS-GRID)===*/
+    #galeria{
+        grid-template-columns: repeat(4,1fr);
+    }
+
+}
