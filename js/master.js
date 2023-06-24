@@ -67,11 +67,13 @@ let paises = [
   }
 ];
 
+/*
 let pais = document.getElementById('pais');
 
 for(let i=0; i < paises.length; i++){
   pais.innerHTML+= `<option value="${paises[i].id}">${paises[i].pais} </option>`;
 }
+*/
 
 /*=== Trabajando con transiciones a nuestros elementos del HTML===*/
 window.addEventListener('scroll', function(){
@@ -79,3 +81,17 @@ window.addEventListener('scroll', function(){
   encabezado.classList.toggle('animar', window.scrollY > 0);
 })
 
+/*=== Trabajando con el consumo de APIs Externas===*/
+//Las Promesas
+fetch('https://apis.datos.gob.ar/georef/api/provincias?campos=id,nombre')
+//fetch('https://apis.datos.gob.ar/georef/api/municipios?provincia=22&campos=id,nombre&max=100')
+.then((respuesta)=>{
+  return respuesta.json()
+})
+.then((datos)=>{
+  console.log(datos.provincias);
+  let provincia = document.getElementById('provincia');
+  for(let i=0; i<datos.provincias.length; i++){
+    provincia.innerHTML += `<option value=${datos.provincias[i].id}>${datos.provincias[i].nombre} </option>`
+  }
+})

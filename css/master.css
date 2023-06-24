@@ -9,7 +9,7 @@
 html{
     scroll-behavior: smooth;
 }
-img{
+img,video{
     width: 100%; /*Medida relativa*/    
 }
 ul{
